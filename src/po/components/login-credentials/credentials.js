@@ -1,10 +1,11 @@
 module.exports = {
-    users: [
-        { username: "standard_user", password: "secret_sauce" },
-        { username: "locked_out_user", password: "secret_sauce" },
-        { username: "problem_user", password: "secret_sauce" },
-        { username: "performance_glitch_user", password: "secret_sauce" },
-        { username: "error_user", password: "secret_sauce" },
-        { username: "visual_user", password: "secret_sauce" }
+    usernameMissing: [
+        { username: 'TestuserName', password: 'TestuserPassword', expectedError: 'Epic sadface: Username is required' }
+    ],
+    passwordMissing: [
+        { username: 'TestuserName', password: 'TestuserPassword', expectedError: 'Epic sadface: Password is required' }
+    ],
+    ValidLogin: [
+        { username: 'standard_user', password: 'secret_sauce', expectedTitle: 'Products' }
     ]
 };
