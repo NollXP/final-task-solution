@@ -211,9 +211,9 @@ exports.config = {
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
-    beforeHook: async function (test, context, hookName) {
-    await browser.url('https://www.saucedemo.com');
-    },
+    // beforeHook: async function (test, context, hookName) {
+    
+    // },
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
