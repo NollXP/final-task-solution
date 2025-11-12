@@ -17,12 +17,11 @@ class LoginPage {
         await browser.url('/');
     }
 
-    async setUsername(username = 'standard_user') {
+    async setCredentials(username = 'standard_user', password = 'secret_sauce') {
         await this.usernameSelector.setValue(username);
-    }
-    async setPassword(password = 'secret_sauce') {
         await this.passwordSelector.setValue(password);
     }
+   
     async LoginButton() {
         await this.loginButtonSelector.click();
     }
@@ -34,17 +33,6 @@ class LoginPage {
         await this.passwordSelector.click();
         await browser.keys(['Control', 'a']);
         await browser.keys('Backspace');
-    }
-
-    async clearAllImputs() {
-        await this.clearUsername();
-        await this.clearPassword();
-    }
-
-    async login(username, password) {
-        await this.setUsername(username);
-        await this.setPassword(password);
-        await this.clickLogin();
     }
 }
 
