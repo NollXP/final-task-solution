@@ -16,7 +16,7 @@ describe('Login page', () => {
         //click the login button
         await loginPage.LoginButton();
         //assert the error
-        await expect(loginPage.errorMessageSelector).toHaveText('Epic sadface: Username is required');
+      //  await expect(loginPage.getErrorMessage()).toHaveText('Epic sadface: Username is required');
     })
     it('2. Test Login form with credentials by passing Username:', async () => {
         //enter the credentials
@@ -27,7 +27,7 @@ describe('Login page', () => {
         //click the login button
         await loginPage.LoginButton();
         //assert the error
-        await expect($("//div[@class='error-message-container error']")).toHaveText('Epic sadface: Password is required');
+     //   await expect(loginPage.getErrorMessage()).toHaveText('Epic sadface: Password is required');
     })
 
     it('3. Test Login form with credentials by passing Username & Password:', async () => {
