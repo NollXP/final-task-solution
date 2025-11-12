@@ -5,34 +5,28 @@ class LoginPage {
         await browser.url('/');
     }
 
-    async setCredentials(username = 'standard_user', password = 'secret_sauce') {
-        await this.loginItems('usernameSelector').setValue(username);
-        await this.loginItems('passwordSelector').setValue(password);
+    async setCredentials(username,password) {
+        await this.usernameInput.setValue(username);
+        await this.passwordInput.setValue(password);
     }
     async LoginButton() {
-         await this.loginItems('loginButtonSelector').click();
+         await this.loginButton.click();
     }
     async clearUsername() {
-        await this.loginItems('usernameSelector').clearValue();
-        await browser.keys('Backspace');
-    }
-    async clearPassword() {
-        await this.loginItems('passwordSelector').click();
+        await this.usernameInput.click();
         await browser.keys(['Control', 'a']);
         await browser.keys('Backspace');
     }
-    async getErrorMessage() {
-        await this.loginItems('errormessageselector');
+    async clearPassword() {
+        await this.passwordInput.click();
+        await browser.keys(['Control', 'a']);
+        await browser.keys('Backspace');
     }
-     loginItems(param){
-        const selectors = {
-            usernameselector: "//input[@name='user-name']",
-            passwordselector: "//input[@name='password']",
-            loginbuttonselector: "//input[@name='login-button']",
-            errormessageselector: "//div[@class='error-message-container error']"
-        };
-            return $(selectors[param.toLowerCase()]);
-    }
+
+    get usernameInput() { return $("//input[@name='user-name']"); }
+    get passwordInput() { return $("//input[@name='password']"); }
+    get loginButton() { return $("//input[@name='login-button']"); }
+    get errorMessage() { return $("//div[@class='error-message-container error']"); }
 }
 
 module.exports = new LoginPage();
