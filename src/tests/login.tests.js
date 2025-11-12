@@ -8,9 +8,10 @@ describe('Login page', () => {
 
     it('1. Test Login form with empty credentials:', async () => {
         //enter the credentials
-        await loginPage.enterCredentials();
+        await loginPage.setCredentials();
         //bouth fields
-        await loginPage.clearAllImputs();
+        await loginPage.clearUsername();
+        await loginPage.clearPassword();
         await browser.pause(500);
         //click the login button
         await loginPage.LoginButton();
@@ -19,7 +20,7 @@ describe('Login page', () => {
     })
     it('2. Test Login form with credentials by passing Username:', async () => {
         //enter the credentials
-        await loginPage.enterCredentials();
+        await loginPage.setCredentials();
         //delete the password
         await loginPage.clearPassword();
         await browser.pause(500);
@@ -30,7 +31,7 @@ describe('Login page', () => {
     })
 
     it('3. Test Login form with credentials by passing Username & Password:', async () => {
-        await loginPage.enterCredentials();
+        await loginPage.setCredentials();
         await loginPage.LoginButton();
         await basePage.LogoText.isDisplayed();
     })
