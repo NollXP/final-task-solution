@@ -1,5 +1,5 @@
 class BasePage {
-    get LogoText() {
+    get TitalText() {
         return $("//span[@class='title']");
     }
 }

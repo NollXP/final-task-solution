@@ -5,12 +5,12 @@ class LoginPage {
         await browser.url('/');
     }
 
-    async setCredentials(username,password) {
+    async setCredentials(username, password) {
         await this.usernameInput.setValue(username);
         await this.passwordInput.setValue(password);
     }
     async LoginButton() {
-         await this.loginButton.click();
+        await this.loginButton.click();
     }
     async clearUsername() {
         await this.usernameInput.click();
