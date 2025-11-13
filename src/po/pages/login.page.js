@@ -1,26 +1,25 @@
+const LoginSelectors = require('../components/login-components/login.selectors');
 class LoginPage {
     async setCredentials(username, password) {
-        await this.usernameInput.setValue(username);
-        await this.passwordInput.setValue(password);
+        await $(LoginSelectors.usernameInput).setValue(username);
+        await $(LoginSelectors.passwordInput).setValue(password);
     };
     async LoginButton() {
-        await this.loginButton.click();
+        await $(LoginSelectors.loginButton).click();
     };
     async clearUsername() {
-        await this.usernameInput.click();
+        await $(LoginSelectors.usernameInput).click();
         await browser.keys(['Control', 'a']);
         await browser.keys('Backspace');
     };
     async clearPassword() {
-        await this.passwordInput.click();
+        await $(LoginSelectors.passwordInput).click();
         await browser.keys(['Control', 'a']);
         await browser.keys('Backspace');
     };
-
-    get usernameInput() { return $("//input[@name='user-name']"); }
-    get passwordInput() { return $("//input[@name='password']"); }
-    get loginButton() { return $("//input[@name='login-button']"); }
-    get errorMessage() { return $("//div[@class='error-message-container error']"); }
+    async getErrorMessage() {
+        return $(LoginSelectors.errorMessage).getText();
+    }
 };
 
 module.exports = new LoginPage();
