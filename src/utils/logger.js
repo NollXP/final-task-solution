@@ -6,10 +6,12 @@ const log = winston.createLogger({
     winston.format.colorize(),
     winston.format.timestamp({ format: 'HH:mm:ss' }),
     winston.format.printf(({ timestamp, level, message }) => 
-      `${timestamp} [${level}]: ${message}` // no browser here
+      `${timestamp} [${level}] [${browser.capabilities.browserName}]: ${message}`
     )
   ),
-  transports: [new winston.transports.Console()],
+  transports: [
+    new winston.transports.Console()
+  ],
 });
 
 module.exports = log;

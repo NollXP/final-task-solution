@@ -5,10 +5,6 @@ const LoginCredentials = require('../po/components/login-components/credentials'
 const log = require('../utils/logger');
 
 describe('Login page', () => {
-    
-    beforeEach(async () => {
-        await loginPage.open();
-    });
 
     it('1. Test Login form with empty credentials', async () => {
         log.info('Testing login with empty credentials');
