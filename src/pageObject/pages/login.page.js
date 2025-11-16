@@ -10,8 +10,7 @@ class LoginPage {
         await $(loginSelectors.loginButton).click();
     };
     async clearUsername() {
-        await $(loginSelectors.usernameInput).click();
-        await browser.keys(['Control', 'a']);
+        await $(loginSelectors.usernameInput).doubleClick();
         await browser.keys('Backspace');
     };
     async clearPassword() {

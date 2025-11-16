@@ -3,12 +3,10 @@ module.exports ={
                 username: 'tesUser123',
                 password: 'TestPass123',
                 expectedPasswordError: 'Password is required',
-                expectedUsernameError: 'Username is required',
+                expectedUsernameError: 'Username is required'
         },
         validCredentials: {
                 username: 'standard_user',
-                password: 'secret_sauce',
-                expectedLogo: 'Swag Labs',
-                expectedTital: 'Products',
+                password: 'secret_sauce'
         }
 };
