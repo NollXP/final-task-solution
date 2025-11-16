@@ -1,41 +1,45 @@
 const { expect } = require('chai');
-const loginPage = require('../po/pages/login.page');
-const basePage = require('../po/pages/base.page');
-const creds = require('../po/components/login-components/credentials');
+const loginPage = require('../pageObject/pages/login.page');
+const homeSelectors = require('../pageObject/components/home-components/home.selectors');
+const dataProvider = require('../pageObject/components/login-components/data.Provider');
 const log = require('../utils/logger');
 
 describe('Login page', () => {
 
-    it('1. Test Login form with empty credentials', async () => {
-        log.info('Testing login with empty credentials');
+    it('UC-1 Test Login form with empty dataProvider:', async () => {
+        const data = dataProvider.ClearedFields;
+        log.info('Testing login with empty dataProvider');
 
-        await loginPage.setCredentials(creds.testUsername, creds.testPassword);
+        await loginPage.setCredentials(data.username, data.password);
         await loginPage.clearUsername();
         await loginPage.clearPassword();
-        await loginPage.LoginButton();
-        
+        await loginPage.clickLoginButton();
+
         const errorText = await loginPage.getErrorMessage();
-        expect(errorText).to.include(creds.userErrorMessage);
+        await browser.pause(2000);
+        expect(errorText).to.include(data.expectedUsernameError);
     });
 
-    it('2. Test Login form with credentials by passing Username', async () => {
+    it('UC-2 Test Login form with dataProvider by passing Username:', async () => {
+        const data = dataProvider.ClearedFields;
         log.info('Testing login with only username');
 
-        await loginPage.setCredentials(creds.testUsername, creds.testPassword);
+        await loginPage.setCredentials(data.username, data.password);
         await loginPage.clearPassword();
-        await loginPage.LoginButton();
-        
+        await loginPage.clickLoginButton();
+        await browser.pause(2000);
         const errorText = await loginPage.getErrorMessage();
-        expect(errorText).to.include(creds.passwordErrorMessage);
+        expect(errorText).to.include(data.expectedPasswordError);
     });
 
-    it('3. Test Login form with credentials by passing Username & Password', async () => {
+    it('UC-3 Test Login form with dataProvider by passing Username & Password:', async () => {
+        const data = dataProvider.validCredentials;
         log.info('Testing login with valid username and password');
 
-        await loginPage.setCredentials(creds.validUsername, creds.validPassword);
-        await loginPage.LoginButton();
-        
-        const isDisplayed = await basePage.TitalText.isDisplayed();
-        expect(isDisplayed).to.be.true;
+        await loginPage.setCredentials(data.username, data.password);
+        await loginPage.clickLoginButton();
+        await browser.pause(2000);
+        const logoText = await $(homeSelectors.logoSelector).getText();
+        expect(logoText).to.equal(data.expectedLogo);
     });
 });

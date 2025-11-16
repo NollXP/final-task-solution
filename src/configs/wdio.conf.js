@@ -50,11 +50,21 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome'
-    }, {
+   capabilities: [
+    {
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+            prefs: {
+                'credentials_enable_service': false,
+                'profile.password_manager_enabled': false
+            },
+            args: ['--disable-infobars']
+        }
+    },
+    {
         browserName: 'MicrosoftEdge'
-    }],
+    }
+],
 
     //
     // ===================
