@@ -7,7 +7,7 @@ const log = require('../utils/logger');
 
 describe('Login page', () => {
   it('UC-1 Test Login form with empty dataProvider:', async () => {
-    const dataLogin = loginPageDataProvider.ClearedFields;
+    const dataLogin = loginPageDataProvider.testFields;
     log.info('Testing login with empty dataProvider');
 
     await loginPage.setCredentials(dataLogin.username, dataLogin.password);
@@ -16,11 +16,11 @@ describe('Login page', () => {
     await loginPage.clickLoginButton();
 
     const errorText = await loginPage.getErrorMessage();
-    expect(errorText).to.include(dataLogin.expectedUsernameError);
+    expect(errorText).to.include(dataLogin.errorMessages.emptyUsername);
   });
 
   it('UC-2 Test Login form with dataProvider by passing Username:', async () => {
-    const dataLogin = loginPageDataProvider.ClearedFields;
+    const dataLogin = loginPageDataProvider.testFields;
     log.info('Testing login with only username');
 
     await loginPage.setCredentials(dataLogin.username, dataLogin.password);
@@ -28,7 +28,7 @@ describe('Login page', () => {
     await loginPage.clickLoginButton();
 
     const errorText = await loginPage.getErrorMessage();
-    expect(errorText).to.include(dataLogin.expectedPasswordError);
+    expect(errorText).to.include(dataLogin.errorMessages.emptyPassword);
   });
 
   it('UC-3 Test Login form with dataProvider by passing Username & Password:', async () => {

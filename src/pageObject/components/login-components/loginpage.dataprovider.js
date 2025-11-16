@@ -1,12 +1,15 @@
 module.exports = {
-  ClearedFields: {
-    username: 'tesUser123',
+  testFields: {
+    username: 'testUser123',
     password: 'TestPass123',
-    expectedPasswordError: 'Password is required',
-    expectedUsernameError: 'Username is required',
+     errorMessages: {
+    emptyUsername: 'Username is required',
+    emptyPassword: 'Password is required'
+  },
   },
   validCredentials: {
     username: 'standard_user',
     password: 'secret_sauce',
   },
+ 
 };

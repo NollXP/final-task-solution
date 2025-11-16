@@ -8,12 +8,6 @@ class HomePage {
     await $(homeSelectors.logoSelector).waitForDisplayed();
     return $(homeSelectors.logoSelector).getText();
   }
-  async gethamburgerMenu() {
-    return $(homeSelectors.hamburgerMenuSelector);
-  }
-  async getlogOutButton() {
-    return $(homeSelectors.logOutBtnSelector);
-  }
 }
 
 module.exports = new HomePage();
