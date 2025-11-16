@@ -41,7 +41,7 @@ describe('Login page', () => {
     await loginPage.clickLoginButton();
 
     const titleText = await homePage.getTitleText();
-    expect(titleText).to.equal(await dataHomePage.expectedTital);
+    expect(titleText).to.equal(dataHomePage.expectedTital);
   });
 
   /**
