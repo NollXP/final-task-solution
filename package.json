@@ -12,7 +12,8 @@
     "@wdio/logger": "^9.18.0",
     "@wdio/mocha-framework": "^9.20.0",
     "@wdio/spec-reporter": "^9.20.0",
-    "chai": "^6.2.1"
+    "chai": "^6.2.1",
+    "prettier": "^3.6.2"
   },
   "dependencies": {
     "winston": "^3.18.3"
