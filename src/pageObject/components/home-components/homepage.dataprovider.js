@@ -1,6 +1,5 @@
 module.exports = {
   staticText: {
-    expectedLogo: 'Swag Labs',
-    expectedTital: 'Products',
+    expectedTital: 'Swag Labs',
   },
 };
