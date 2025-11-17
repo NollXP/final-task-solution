@@ -1,12 +1,14 @@
 const { expect } = require('chai');
 const loginPage = require('../pageObject/pages/login.page');
 const homePage = require('../pageObject/pages/home.page');
+
 const loginPageDataProvider = require('../pageObject/components/login-components/loginpage.dataprovider');
 const homePageDataProvider = require('../pageObject/components/home-components/homepage.dataprovider');
+
 const log = require('../utils/logger');
 
 describe('Login page', () => {
-  it('UC-1 Test Login form with empty dataProvider:', async () => {
+  it('UC-1 Test Login form with empty credentials:', async () => {
     const dataLogin = loginPageDataProvider.testImputs;
     
     log.info('Testing login with empty credentials');
@@ -20,7 +22,7 @@ describe('Login page', () => {
     expect(errorText).to.include(dataLogin.errorMessages.emptyUsername);
   });
 
-  it('UC-2 Test Login form with dataProvider by passing Username:', async () => {
+  it('UC-2 Test Login form with credentials by passing Username:', async () => {
     const dataLogin = loginPageDataProvider.testImputs;
 
     log.info('Testing login with only username');
