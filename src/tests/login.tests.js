@@ -8,43 +8,43 @@ const homePageDataProvider = require('../pageObject/components/home-components/h
 const log = require('../utils/logger');
 
 describe('Login page', () => {
-  it('UC-1 Test Login form with empty credentials:', async () => {
-    const dataLogin = loginPageDataProvider.testImputs;
-    
+  it('UC-1: should show an error when attempting to log in with empty credentials', async () => {
+    const creds = loginPageDataProvider.invalid.invalidCredentials;
+
     log.info('Testing login with empty credentials');
 
-    await loginPage.setCredentials(dataLogin.username, dataLogin.password);
+    await loginPage.setCredentials(creds.username, creds.password);
     await loginPage.clearUsername();
     await loginPage.clearPassword();
     await loginPage.clickLoginButton();
 
     const errorText = await loginPage.getErrorMessage();
-    expect(errorText).to.include(dataLogin.errorMessages.emptyUsername);
+    expect(errorText).to.include(loginPageDataProvider.errors.emptyUsernameError);
   });
 
-  it('UC-2 Test Login form with credentials by passing Username:', async () => {
-    const dataLogin = loginPageDataProvider.testImputs;
+  it('UC-2: should show an error when attempting to log in without a password', async () => {
+    const creds = loginPageDataProvider.invalid.invalidCredentials;
 
     log.info('Testing login with only username');
 
-    await loginPage.setCredentials(dataLogin.username, dataLogin.password);
+    await loginPage.setCredentials(creds.username, creds.password);
     await loginPage.clearPassword();
     await loginPage.clickLoginButton();
 
     const errorText = await loginPage.getErrorMessage();
-    expect(errorText).to.include(dataLogin.errorMessages.emptyPassword);
+    expect(errorText).to.include(loginPageDataProvider.errors.emptyPasswordError);
   });
 
-  it('UC-3 Test Login form with credentials by passing Username & Password:', async () => {
-    const dataLogin = loginPageDataProvider.validInputs;
+  it('UC-3: should login successfully with valid credentials', async () => {
+    const creds = loginPageDataProvider.valid.standardUser;
     const dataHomePage = homePageDataProvider.staticText;
 
     log.info('Login with valid credentials');
 
-    await loginPage.setCredentials(dataLogin.username, dataLogin.password);
+    await loginPage.setCredentials(creds.username, creds.password);
     await loginPage.clickLoginButton();
 
     const titleText = await homePage.getTitleText();
-    expect(titleText).to.equal(dataHomePage.expectedTital);
+    expect(titleText).to.equal(dataHomePage.expectedTitle);
   });
 });

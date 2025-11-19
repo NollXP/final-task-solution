@@ -1,5 +1,5 @@
 module.exports = {
   staticText: {
-    expectedTital: 'Swag Labs',
+    expectedTitle: 'Swag Labs',
   },
 };
